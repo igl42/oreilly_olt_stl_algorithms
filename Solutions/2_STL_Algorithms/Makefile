@@ -1,8 +1,8 @@
 #==================================================================================================
 #
-#  Makefile for chapter "STL Algorithms"
+#  Makefile for subchapter "Algorithms" of chapter "Concepts and the STL"
 #
-#  Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+#  Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 #
 #  This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 #  context of the C++ training or with explicit agreement by Klaus Iglberger.
@@ -23,9 +23,9 @@ BIN = $(SRC:.cpp=)
 # Rules
 default: Accumulate_1 Accumulate_2 BadAccumulate BadCopy BadTransform CartesianProduct \
          ExtractStrings Fibonacci IsEmailAddress IsPalindrome IsPunct LongestStreak \
-         MajorityVote Median Partition RangesRefactoring_1 RangesRefactoring_2 \
-         RangesRefactoring_3 RangesRefactoring_4 STLintro STLpro Simpson SimpsonPro \
-         SortSubrange Trap
+         MajorityVote Median Partition RangesRefactoring_Animals RangesRefactoring_Birthday \
+         RangesRefactoring_Countries RangesRefactoring_Recipes \
+         STLintro STLpro Simpson SimpsonPro SortSubrange Trap
 
 Accumulate_1: Accumulate_1.cpp
 	$(CXX) $(CXXFLAGS) -o Accumulate_1 Accumulate_1.cpp
@@ -72,17 +72,17 @@ Median: Median.cpp
 Partition: Partition.cpp
 	$(CXX) $(CXXFLAGS) -o Partition Partition.cpp
 
-RangesRefactoring_1: RangesRefactoring_1.cpp
-	$(CXX) $(CXXFLAGS) -o RangesRefactoring_1 RangesRefactoring_1.cpp
+RangesRefactoring_Animals: RangesRefactoring_Animals.cpp
+	$(CXX) $(CXXFLAGS) -o RangesRefactoring_Animals RangesRefactoring_Animals.cpp
 
-RangesRefactoring_2: RangesRefactoring_2.cpp
-	$(CXX) $(CXXFLAGS) -o RangesRefactoring_2 RangesRefactoring_2.cpp
+RangesRefactoring_Birthday: RangesRefactoring_Birthday.cpp
+	$(CXX) $(CXXFLAGS) -o RangesRefactoring_Birthday RangesRefactoring_Birthday.cpp
 
-RangesRefactoring_3: RangesRefactoring_3.cpp
-	$(CXX) $(CXXFLAGS) -o RangesRefactoring_3 RangesRefactoring_3.cpp
+RangesRefactoring_Countries: RangesRefactoring_Countries.cpp
+	$(CXX) $(CXXFLAGS) -o RangesRefactoring_Countries RangesRefactoring_Countries.cpp
 
-RangesRefactoring_4: RangesRefactoring_4.cpp
-	$(CXX) $(CXXFLAGS) -o RangesRefactoring_4 RangesRefactoring_4.cpp
+RangesRefactoring_Recipes: RangesRefactoring_Recipes.cpp
+	$(CXX) $(CXXFLAGS) -o RangesRefactoring_Recipes RangesRefactoring_Recipes.cpp
 
 STLintro: STLintro.cpp
 	$(CXX) $(CXXFLAGS) -o STLintro STLintro.cpp

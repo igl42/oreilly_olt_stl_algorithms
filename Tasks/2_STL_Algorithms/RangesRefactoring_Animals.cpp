@@ -1,9 +1,9 @@
 /**************************************************************************************************
 *
-* \file RangesRefactoring_4.cpp
+* \file RangesRefactoring_Animals.cpp
 * \brief C++ Training - Refactoring Task from Imperative to Declarative Code
 *
-* Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+* Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 *
 * This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 * context of the C++ training or with explicit agreement by Klaus Iglberger.
@@ -44,7 +44,7 @@ constexpr auto to()
 }
 
 template< std::ranges::input_range R, template<typename...> class C >
-auto operator|( R&& range, to_range<C> )
+constexpr auto operator|( R&& range, to_range<C> )
 {
    return to<C>(range);
 }
@@ -103,7 +103,7 @@ int main()
                     , Animal{ "Komodo Dragon", 304.0, 91.0, 20.0 }
                     , Animal{ "Great Anaconda", 900.0, 250.0, 27.0 }
                     , Animal{ "Red Garden Ant", 0.6, 0.00001, 0.9 } } )
-      , std::make_pair( "TODO",
+      , std::make_pair( "Winners from the Animal World",
          std::vector{ Animal{ "Gorilla", 180.0, 220.0, 35.0 }
                     /*, Animal{ "Nile Crocodile", 650.0, 1000.0, 0.5 }*/
                     , Animal{ "Bee", 1.8, 0.0003, 28.0 }

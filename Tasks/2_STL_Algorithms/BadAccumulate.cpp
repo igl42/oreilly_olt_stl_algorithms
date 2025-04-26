@@ -3,7 +3,7 @@
 * \file BadAccumulate.cpp
 * \brief C++ Training - Standard Library Programming Task
 *
-* Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+* Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 *
 * This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 * context of the C++ training or with explicit agreement by Klaus Iglberger.

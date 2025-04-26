@@ -1,9 +1,9 @@
 /**************************************************************************************************
 *
-* \file RangesRefactoring_1.cpp
+* \file RangesRefactoring_Birthday.cpp
 * \brief C++ Training - Refactoring Task from Imperative to Declarative Code
 *
-* Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+* Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 *
 * This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 * context of the C++ training or with explicit agreement by Klaus Iglberger.
@@ -11,7 +11,7 @@
 * Step 1: Understand the inner workings of the 'select_birthday_children()' function: what does
 *         the function return?
 *
-* Step 2: Refactor the function from an imperative to a declarative stype by means of C++20
+* Step 2: Refactor the function from an imperative to a declarative style by means of C++20
 *         ranges.
 *
 * Step 3: Compare the runtime performance of both versions (imperative and declarative).
@@ -45,7 +45,7 @@ constexpr auto to()
 }
 
 template< std::ranges::input_range R, template<typename...> class C >
-auto operator|( R&& range, to_range<C> )
+constexpr auto operator|( R&& range, to_range<C> )
 {
    return to<C>(range);
 }
@@ -133,6 +133,53 @@ struct Person
 };
 
 
+//---- <Functional.h> -----------------------------------------------------------------------------
+
+//#include <Person.h>
+
+auto is_younger()
+{
+   return []( Person const& lhs, Person const& rhs )
+   {
+      return lhs.birthday < rhs.birthday;
+   };
+}
+
+auto has_year( Year year )
+{
+   return [year]( Person const& person )
+   {
+      return person.birthday.year == year;
+   };
+}
+
+auto has_month( Month month )
+{
+   return [month]( Person const& person )
+   {
+      return person.birthday.month == month;
+   };
+}
+
+template< typename... Functions >
+auto when_any( Functions... functions )
+{
+   return [functions...]<typename... Ts>( Ts const&... values )
+   {
+      return ( functions(values...) || ... );
+   };
+}
+
+template< typename... Functions >
+auto when_all( Functions... functions )
+{
+   return [functions...]<typename... Ts>( Ts const&... values )
+   {
+      return ( functions(values...) && ... );
+   };
+}
+
+
 //---- <Random.h> ---------------------------------------------------------------------------------
 
 //#include <Person.h>
@@ -161,7 +208,9 @@ std::vector<Person> createPersons( size_t N, std::mt19937 rng )
 
 //---- <Main.cpp> ---------------------------------------------------------------------------------
 
+//#include <Functional.h>
 //#include <Person.h>
+//#include <Random.h>
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
@@ -175,6 +224,7 @@ using Contacts = std::map<std::string,std::vector<Person>>;
 std::vector<Person> select_birthday_children( Contacts const& contacts )
 {
    // Manual solution (imperative style)
+   /*
    std::vector<Person> birthday_children{};
 
    for( auto const& contact_group : contacts )
@@ -193,6 +243,38 @@ std::vector<Person> select_birthday_children( Contacts const& contacts )
          }
       }
    }
+
+   return birthday_children;
+   */
+
+
+   // C++17 algoritms solution (declarative style)
+   /*
+   std::vector<Person> birthday_children{};
+
+   for( auto const& contact_group : contacts ) {
+      std::copy_if( begin(contact_group.second), end(contact_group.second)
+                  , std::back_inserter(birthday_children)
+                  , when_all( has_year(Year{1955})
+                            , when_any( has_month(Month{10}), has_month(Month{11}) ) ) );
+   }
+
+   std::sort( begin(birthday_children), end(birthday_children), is_younger() );
+
+   return birthday_children;
+   */
+
+
+   // C++20 ranges solution (declarative style)
+   auto birthday_children = contacts
+                          | std::views::values
+                          | std::views::join
+                          | std::views::filter(
+                               when_all( has_year(Year{1955})
+                                       , when_any( has_month(Month{10}), has_month(Month{11}) ) ) )
+                          | to<std::vector>();
+
+   std::ranges::sort( birthday_children, is_younger() );
 
    return birthday_children;
 }

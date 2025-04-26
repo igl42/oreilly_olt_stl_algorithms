@@ -1,8 +1,8 @@
 #==================================================================================================
 #
-#  CMakeLists for chapter "STL Algorithms"
+#  CMakeLists for subchapter "Algorithms" of chapter "Concepts and the STL"
 #
-#  Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+#  Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 #
 #  This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 #  context of the C++ training or with explicit agreement by Klaus Iglberger.
@@ -73,20 +73,20 @@ add_executable(Partition
    Partition.cpp
    )
 
-add_executable(RangesRefactoring_1
-   RangesRefactoring_1.cpp
+add_executable(RangesRefactoring_Animals
+   RangesRefactoring_Animals.cpp
    )
 
-add_executable(RangesRefactoring_2
-   RangesRefactoring_2.cpp
+add_executable(RangesRefactoring_Birthday
+   RangesRefactoring_Birthday.cpp
    )
 
-add_executable(RangesRefactoring_3
-   RangesRefactoring_3.cpp
+add_executable(RangesRefactoring_Countries
+   RangesRefactoring_Countries.cpp
    )
 
-add_executable(RangesRefactoring_4
-   RangesRefactoring_4.cpp
+add_executable(RangesRefactoring_Recipes
+   RangesRefactoring_Recipes.cpp
    )
 
 add_executable(Simpson
@@ -129,10 +129,10 @@ set_target_properties(
    MajorityVote
    Median
    Partition
-   RangesRefactoring_1
-   RangesRefactoring_2
-   RangesRefactoring_3
-   RangesRefactoring_4
+   RangesRefactoring_Animals
+   RangesRefactoring_Birthday
+   RangesRefactoring_Countries
+   RangesRefactoring_Recipes
    Simpson
    SimpsonPro
    SortSubrange
@@ -140,5 +140,5 @@ set_target_properties(
    STLpro
    Trap
    PROPERTIES
-   FOLDER "3_Concepts_and_STL/Algorithms"
+   FOLDER "2_STL_Algorithms"
    )

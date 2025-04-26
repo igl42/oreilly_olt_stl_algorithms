@@ -1,9 +1,9 @@
 /**************************************************************************************************
 *
-* \file RangesRefactoring_2.cpp
+* \file RangesRefactoring_Recipes.cpp
 * \brief C++ Training - Refactoring Task from Imperative to Declarative Code
 *
-* Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+* Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 *
 * This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 * context of the C++ training or with explicit agreement by Klaus Iglberger.
@@ -42,7 +42,7 @@ constexpr auto to()
 }
 
 template< std::ranges::input_range R, template<typename...> class C >
-auto operator|( R&& range, to_range<C> )
+constexpr auto operator|( R&& range, to_range<C> )
 {
    return to<C>(range);
 }
@@ -145,7 +145,7 @@ auto need_eggs( size_t number )
 {
    return [number]( std::tuple<Recipe,Recipe> const& combi )
    {
-      return ( get<0>(combi).number_of_eggs + get<1>(combi).number_of_eggs ) == 5U;
+      return ( get<0>(combi).number_of_eggs + get<1>(combi).number_of_eggs ) == number;
    };
 }
 

@@ -3,7 +3,7 @@
 * \file RangesExample.cpp
 * \brief C++ Training - Example for the C++20 ranges library
 *
-* Copyright (C) 2015-2024 Klaus Iglberger - All Rights Reserved
+* Copyright (C) 2015-2025 Klaus Iglberger - All Rights Reserved
 *
 * This file is part of the C++ training by Klaus Iglberger. The file may only be used in the
 * context of the C++ training or with explicit agreement by Klaus Iglberger.
